@@ -2,29 +2,32 @@ const { ApplicationCommandType, ApplicationCommandOptionType, EmbedBuilder, Butt
 const packageJson = require('../../../package.json');
 const emojis = require('../../emojis');
 
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { ApplicationCommandType } = require('discord-api-types/v9');
+
 module.exports = {
-    name: 'bot',
-    description: 'Get bot information',
+    data: new SlashCommandBuilder()
+        .setName('bot')
+        .setDescription('Get bot information')
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('avatar')
+                .setDescription('Get the bot\'s avatar')
+        )
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('info')
+                .setDescription('Get information about the bot')
+        )
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('author')
+                .setDescription('Get information about the bot\'s author')
+        ),
     type: ApplicationCommandType.ChatInput,
     cooldown: 10000,
-    options: [
-        {
-            type: ApplicationCommandOptionType.Subcommand,
-            name: 'avatar',
-            description: 'Get the bot\'s avatar'
-        },
-        {
-            type: ApplicationCommandOptionType.Subcommand,
-            name: 'info',
-            description: 'Get information about the bot'
-        },
-        {
-            type: ApplicationCommandOptionType.Subcommand,
-            name: 'author',
-            description: 'Get information about the bot\'s author'
-        }
-    ],
-    async run(client, interaction) {
+    },
+    async execute(client, interaction) {
         const subCommand = interaction.options.getSubcommand();
 
         switch (subCommand) {
