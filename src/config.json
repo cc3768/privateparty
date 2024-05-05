@@ -1,0 +1,13 @@
+{
+    "Secrets": {
+        "Bot": {"token": ""},
+        "Database":{"Url": "","Hostname":"","username":"","password":"","database":""}
+    },
+    "Settings":{
+        "Debug": false
+    },
+    "protected":{
+    "devID": ["181124932439113728"],
+    "applicationId": "1235701019196002405"
+    }
+}
